@@ -56,6 +56,7 @@
                 class="search-box"
                 placeholder="Cari berdasarkan nama game atau AppID..."
             />
+            <button id="searchBtn" class="search-btn">Cari</button>
         </div>
 
 
@@ -223,6 +224,27 @@
             renderGames(allGames.slice(start, end));
         }
 
+        // Web Worker untuk pencarian
+        let searchWorker = null;
+        function initWorker() {
+            if (window.Worker) {
+                searchWorker = new Worker('worker-search.js');
+                searchWorker.onmessage = function(e) {
+                    renderGames(e.data, true);
+                };
+            }
+        }
+
+        // Debounce helper
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        // Pencarian dengan Web Worker
         function filterGames(query) {
             const q = query.trim().toLowerCase();
             if (!q) {
@@ -231,19 +253,23 @@
                 renderGames(allGames.slice(0, gamesPerPage));
                 return;
             }
-
             isSearching = true;
-            const filtered = allGames.filter(game =>
-                game.name.toLowerCase().includes(q) ||
-                game.appid.toString().includes(q)
-            );
-
-            renderGames(filtered, true);
+            if (searchWorker) {
+                searchWorker.postMessage({ games: allGames, query: q });
+            } else {
+                // fallback jika worker tidak didukung
+                const filtered = allGames.filter(game =>
+                    game.name.toLowerCase().includes(q) ||
+                    game.appid.toString().includes(q)
+                );
+                renderGames(filtered, true);
+            }
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
             const totalCountEl = document.getElementById('total-count');
             const totalCountMobileEl = document.getElementById('total-count-mobile');
+            initWorker();
             try {
                 const res = await fetch('data/games.json');
                 if (!res.ok) throw new Error('Gagal memuat games.json');
@@ -259,8 +285,13 @@
                 renderGames(allGames.slice(0, gamesPerPage));
 
                 const searchInput = document.getElementById('searchInput');
-                searchInput.addEventListener('input', (e) => {
-                    filterGames(e.target.value);
+                const searchBtn = document.getElementById('searchBtn');
+                searchBtn.addEventListener('click', () => {
+                    filterGames(searchInput.value);
+                });
+                // Enter key juga trigger tombol
+                searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') searchBtn.click();
                 });
 
             } catch (err) {
