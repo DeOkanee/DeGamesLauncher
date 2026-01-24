@@ -8,6 +8,8 @@
 
 DeGamesLauncher adalah platform pintar untuk para gamer yang ingin menemukan dan menjelajahi ribuan game Steam dengan mudah. Dengan antarmuka yang intuitif, fitur pencarian canggih, dan akses langsung ke Steam Store, semua yang kamu butuhkan ada dalam satu tempat. **Cukup cari, klik, dan mainkan!** 🔥
 
+
+🌐 **Website**: [de-games-launcher.vercel.app]()
 ---
 
 ## ✨ Fitur Unggulan
@@ -84,11 +86,6 @@ DeGamesLauncher adalah platform pintar untuk para gamer yang ingin menemukan dan
 
 ---
 
-
-### 🎬 **Site**
-```
-https://de-games-launcher.vercel.app
-```
 
 ### 4. **Mulai Cari Game!**
 - Ketik nama game atau AppID di search box
