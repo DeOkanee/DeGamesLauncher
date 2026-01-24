@@ -1,0 +1,437 @@
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+
+    }
+/* === Tombol Menu (☰) di Header === */
+.menu-toggle {
+    font-size: 20px;
+    color: #5f6368;
+    cursor: pointer;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+}
+
+/* === Sidebar === */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px; /* Sembunyikan di luar layar */
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: left 0.3s ease;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    color: #1a73e8;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 12px;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    display: block;
+    padding: 8px 0;
+    transition: color 0.2s;
+}
+
+.sidebar-menu a:hover {
+    color: #1a73e8;
+}
+/* === Brand: Logo + Teks Berdampingan === */
+/* === Brand: Logo + Teks di Tengah === */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.brand-text {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1a73e8;
+    margin: 0;
+    line-height: 1;
+}
+
+/* === Pastikan top-bar-center benar-benar di tengah === */
+.top-bar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 12px 20px;
+    box-shadow: 0 2px 6.
+
+}
+
+.top-bar-left,
+.top-bar-right {
+    min-width: fit-content;
+    flex: 0 1 auto;
+}
+
+.top-bar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* === Overlay Gelap Saat Sidebar Terbuka === */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+@media (max-width: 600px) {
+    .brand-text {
+        font-size: 18px;
+    }
+    .logo {
+        height: 32px;
+    }
+}
+/* === Responsif: Sembunyikan overlay di desktop besar (opsional) === */
+@media (min-width: 992px) {
+    .overlay {
+        display: none !important;
+    }
+}
+/* === Header Tetap di Atas === */
+.top-bar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 12px 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    height: 60px;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: fit-content;
+}
+
+.top-bar-right {
+    text-align: right;
+}
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo-about {
+      height: 80px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 10px rgba(26, 115, 232, 0.6));
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #a0a0ff;
+      margin-bottom: 30px;
+    }
+
+    .about-content {
+      background: rgba(30, 30, 50, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid #3a3a6e;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      text-align: justify;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .feature-card {
+      background: rgba(26, 115, 232, 0.15);
+      border: 1px solid #2a5aa8;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(26, 115, 232, 0.4);
+      background: rgba(26, 115, 232, 0.25);
+    }
+
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      color: #4facfe;
+    }
+
+    .feature-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .back-home {
+      display: block;
+      margin: 30px auto 0;
+      width: fit-content;
+      padding: 12px 28px;
+      background: linear-gradient(to right, #1a73e8, #0d47a1);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(26, 115, 232, 0.5);
+      transition: all 0.3s;
+    }
+
+    .back-home:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(26, 115, 232, 0.7);
+    }
+
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      .logo-about {
+        height: 60px;
+      }
+    }
+/* === Footer Utama === */
+.main-footer {
+    background-color: #1e1e1e;
+    color: #ddd;
+    padding: 32px 20px 16px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+/* --- Perbaikan utama: sesuaikan .footer-brand --- */
+.footer-brand {
+    /* Hapus display: flex lama yang salah */
+    display: block; /* biarkan konten mengalir normal */
+}
+
+.brand-bawah {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.footer-logo,
+.brand-bawah .logo {
+    height: 36px;
+    width: auto;
+    border-radius: 4px;
+}
+
+.brand-bawah-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a73e8;
+    margin: 0;
+    line-height: 1;
+}
+
+.footer-description {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #aaa;
+    max-width: 300px;
+}
+
+/* === Link & Sosial === */
+.footer-links h4,
+.footer-social h4 {
+    margin-bottom: 12px;
+    color: white;
+    font-size: 16px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a,
+.footer-social a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+    color: #1a73e8;
+}
+
+.social-icons {
+    display: flex;
+    gap: 16px;
+    font-size: 20px;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 16px;
+    border-top: 1px solid #333;
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+}
+
+/* === Responsif Mobile === */
+@media (max-width: 600px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: left; /* biarkan rata kiri untuk konsistensi */
+    }
+
+    .brand-bawah {
+        justify-content: flex-start;
+    }
+
+    .social-icons {
+        justify-content: flex-start;
+    }
+
+    .footer-description {
+        max-width: none;
+    }
+
+    /* Opsional: rata tengah jika diinginkan */
+    /*
+    .footer-content {
+        text-align: center;
+    }
+    .brand-bawah {
+        justify-content: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    */
+}
